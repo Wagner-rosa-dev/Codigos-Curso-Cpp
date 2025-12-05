@@ -14,22 +14,25 @@ using namespace std;
 
 int main() {
 
-    const string pass("HER");
+    string pass;
+    cin >> pass;
 
     for (char a = 'A'; a <= 'Z'; ++a){
         for (char b = 'A'; b <= 'Z'; ++b){
             for (char c = 'A'; c <= 'Z'; ++c){
-                const string tempPass({a, b, c});
-                cout << tempPass << endl;
-                if (tempPass == pass){
-                    cout << "\n\n\nPassWord found: " << tempPass << "\n\n\n";
-                    goto END; // aqui serve como uma marcação que quando a senha comparada for igual a senha encontrada inves de colocar varios breaks para sair de todos os for
-                              // eu coloco uma marca para ele ir assim que achar
+                for (char d = 'A'; d <= 'Z'; ++d){
+                    const string tempPass({a, b, c, d});
+                    cout << tempPass << endl;
+                    if (tempPass == pass){
+                        cout << "\n\n\nPassWord found: " << tempPass << "\n\n\n";
+                        goto END; // aqui serve como uma marcação que quando a senha comparada for igual a senha encontrada inves de colocar varios breaks para sair de todos os for
+                        // eu coloco uma marca para ele ir assim que achar
+                    }
                 }
             }
         }
     }
-    END:
+END:
 
 
     return 0;

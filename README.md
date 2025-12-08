@@ -1,4 +1,4 @@
-Códigos fornecidos Pelo Curso para Material de estudo
+Códigos e anotções para estudo
 Todos os códigos escritos e exercícios feitos são de minha autoria
 
 IDE = QtCreator

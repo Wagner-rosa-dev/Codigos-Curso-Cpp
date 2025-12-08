@@ -3,15 +3,21 @@
 
 
 struct DATA{
-/* toda função/metodos do struct recebe o DATA *this, apesar de nao ser visivel
+    /* toda função/metodos do struct recebe o DATA *this, apesar de nao ser visivel
  * o comentario representa como está para o compilador, esse this é o compilador
  * o responsável por colocado ali
  */
 
 public: // Possibilita que qualquer um acesse esses metodos
-    DATA(){
-        m_valid = false;
+
+    DATA() = default;
+
+
+    DATA(short dia, short mes, short ano){
+        change(dia, mes, ano);
     };
+
+
 
     void change(/*DATA *this, */int dia, int mes, int ano) /* dentro das chaves é o parametro */{
         m_dia = dia;
@@ -47,12 +53,14 @@ private: //Possibilita que apenas os metodos do struct acessem e mais ninguem
 int main()
 {
 
-    DATA pgt;
+    DATA pgt(1, 1, 2000);
     pgt.print();
     pgt.change(1, 1, 2025);
     pgt.print();
 
-    printf("size: %zu\n", sizeof(pgt));
+    DATA pgt2;
+    pgt2.print();
+
 
 
     return 0;

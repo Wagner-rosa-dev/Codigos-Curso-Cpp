@@ -1,17 +1,27 @@
 #include <stdio.h>
 
-
-
-struct DATA{
-/* toda função/metodos do struct recebe o DATA *this, apesar de nao ser visivel
- * o comentario representa como está para o compilador, esse this é o compilador
- * o responsável por colocado ali
+/* A diferença de Class para Struct é que:
+ * Tudo que esta dentro do Struct por default é considerado Public
+ * Tudo que esta dentro de Class por default é considerado Private
+ *
  */
 
+
+#include <stdio.h>
+
+class DATA{
+
+
 public: // Possibilita que qualquer um acesse esses metodos
-    DATA(){
-        m_valid = false;
+
+    DATA() = default;
+
+
+    DATA(short dia, short mes, short ano){
+        change(dia, mes, ano);
     };
+
+
 
     void change(/*DATA *this, */int dia, int mes, int ano) /* dentro das chaves é o parametro */{
         m_dia = dia;
@@ -37,7 +47,6 @@ public: // Possibilita que qualquer um acesse esses metodos
     }
 
 private: //Possibilita que apenas os metodos do struct acessem e mais ninguem
-    //tambem chamados de propriedades -  e colocar um prefixo como m_ para identificar como membro
     short m_dia;
     short m_mes;
     short m_ano;
@@ -47,13 +56,17 @@ private: //Possibilita que apenas os metodos do struct acessem e mais ninguem
 int main()
 {
 
-    DATA pgt;
+    DATA pgt(1, 1, 2000);
     pgt.print();
     pgt.change(1, 1, 2025);
     pgt.print();
 
-    printf("size: %zu\n", sizeof(pgt));
+    DATA pgt2;
+    pgt2.print();
+
 
 
     return 0;
 }
+
+

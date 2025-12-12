@@ -1,6 +1,7 @@
 #ifndef DATA_H
 #define DATA_H
 
+#include <compare>
 #include <stdio.h>
 
 class DATA{
@@ -21,14 +22,14 @@ public:
     {
         m_valid = ((m_dia >= 1 && m_dia <= lastDayOfMonth()) &&
                    (m_mes >= 1 && m_mes <= 12) &&
-                   (m_ano >= YEAR_MIN && m_ano <= YEAR_MAX));
+                   (m_ano >= YEAR_MIN && m_ano <= YEAR_MAX ));
     }
 
     void print() const;
 
     short lastDayOfMonth() const;
 
-    bool isLeapYear(short year) const;
+    bool isLeapYear() const;
 
     short dia() const
     {
@@ -44,6 +45,21 @@ public:
     {
         return m_ano;
     }
+
+    auto operator<=>(const DATA &other) const{
+        if (const auto cmp = m_ano <=> other.m_ano; cmp != 0) return cmp;
+        if (const auto cmp = m_mes <=> other.m_mes; cmp != 0) return cmp;
+        return m_dia <=> other.m_dia;
+    }
+
+    bool operator==(const DATA &other) const{
+        return (*this <=> other) == 0;
+    }
+a = 1000
+b = 100
+        cmp = a <=> b;
+    if (cmp > 0) cout
+
 
 private:
     short m_dia;
